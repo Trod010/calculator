@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!-- saved from url=(0061)file:///C:/Users/Tony/Desktop/Code%20Projects/Calculator.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<!--Trying to make click event and learn button click-->
+<script language="javascript">
+    
+    var keys = document.getElementByClassName("calculator");
+    var operators = ['+','-','*','/'];
+    var decimalAdded = false;
+    
+    for(var i=0; i<keys.length; i++) {
+        keys[i]keys.length = function(e) {
+            var input = docuement.getElementByClassName("screen");
+            var inputVal = input.innerHTML;
+            var btnValue = this.innerHTML;
+            
+            if(btnValue =='C') {
+                input.innerHTML = '';
+                decimalAdded = false;
+                
+            } else if(btnValue == '='){
+                var equation = inputVal;
+                var lastChar = equation[equation.length - 1];
+                equation = equation.replace(/x/g,'*');
+                
+                if(operators.indexOf(lastChar) >-1|| lastChar =='.')
+                    equation = equation.replace(/.$/, '');
+                
+                    if(equation)
+                        input.innerHTML = eval(equation);
+                
+                    decimalAdded = false;
+            } else if(operators.indexOf(btnVal)>-1) {
+                
+                var lastChar = inputVal[inputVal.length-1];
+                
+                if (inputVal !=''&&operators.indexOf(lastChar)==-1)
+                    input.innerHTML +=btnVal;
+                
+                else if(inputVal==''&&btnVal =='-')
+                    input.innerHTML +=btnVal;
+                
+                if(operators.indexOf(lastChar)> -1&& inputVal.length>1) {
+                    
+                    input.innerHTML = inputVal.replace(/.$/, btnVal);
+                }
+                
+                decimalAdded = false;
+            }
+            
+                else if(btnVal == '.') {
+                    
+                    if(!decimalAdded){
+                        input.innerHTML +=btnVal;
+                        decimalAdded = true;
+                    }
+                }
+            
+            else {
+                input.innerHTML += btnVal;
+            }
+            
+            e.preventDefault{};
+        }
+    }
+
+    
+</script>
+    
+<title> Tony's Calculator</title>
+
+</head>
+<body>
+
+<!--display box use css to further customize-->
+<div class="calculator">  
+    <div id="screen">
+        <button class= "clear" type="button">C</button>
+        <div class="screen"></div>
+    </div>
+<!-- button group/ use event listener to make click appear in display/ event listener for calculations too-->
+    <div id="result"></div>
+<!--the result above is used with the javascript later on and below are the number groups and basic operators-->    
+    <div class="keys">    
+        <div class="column">
+<button value="1" class="number" type="button">1</button>
+<button value="2" class="number" type="button">2</button>
+<button value="3" class="number" type="button">3</button>
+<button value="+" class="operator" type="button">+</button>            
+        </div>
+        <div class="column">
+<button value="4" class="number" type="button">4</button>  
+<button value="5" class="number" type="button">5</button>    
+<button value="6" class="number" type="button">6</button>
+<button value="-" class="operator" type="button">-</button>            
+        </div>
+        <div class="column">
+<button value="7" class="number" type="button">7</button>    
+<button value="8" class="number" type="button">8</button>
+<button value="9" class="number" type="button">9</button>
+<button value="*" class="operator" type="button">*</button>            
+        </div>
+<button value="0" class="number zero" type="button">0</button>
+<button value="=" class="equal-sign" type="button">=</button>
+<button value="." class="decimal" type="button">.</button>         
+<button value="/" class="operator" type="button">/</button>        
+        </div>
+    </div>
+
+     </body>
+    </html>
